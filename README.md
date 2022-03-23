@@ -63,6 +63,8 @@ B([
 
 ![](docs/media/several_bloxs.png) 
 
+:computer: You can check the [notebook](https://deepnote.com/project/bloxs-ZNGnsap0R7ea8LeZY0uarQ/%2Fnotebook.ipynb) with above example bloxs. 
+
 ## Bloxs works great with Mercury
 
 [Mercury](https://github.com/mljar/mercury) is a framework for converting notebook to an interactive web app. It adds widgets to the notebook based on the YAML config. Below is presented a notebook with bloxs and the same notebook served as a web app with Mercury.
@@ -76,6 +78,8 @@ B([
 ![](docs/media/bloxs_mercury.gif)
 
 The web app is available on [our server](https://mercury.mljar.com/app/5) :computer:
+
+
 
 <p align="center">
 <img src="https://raw.githubusercontent.com/mljar/visual-identity/main/bloxs/blox%20line%20white.png" />
