@@ -13,7 +13,6 @@ class B:
         self,
         data,
         title="",
-        description="",
         percent_change=None,
         progress=None,
         color=None,
