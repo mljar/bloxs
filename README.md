@@ -16,7 +16,7 @@ Install bloxs:
 pip install bloxs
 ```
 
-Import and create a bloxs
+Import and create a bloxs:
 ```
 from bloxs import B
 B(1234, "Bloxs in notebook!")
@@ -64,9 +64,9 @@ B([
 
 ![](docs/media/several_bloxs.png) 
 
-## Bloxs work great with Mercury
+## Bloxs works great with Mercury
 
-[Mercury](https://github.com/mljar/mercury) is a framework for converting notebook to interactive web app. It adds widgets to the notebook based on YAML config. Below is presented a notebook with bloxs and the same notebook served as web app with Mercury.
+[Mercury](https://github.com/mljar/mercury) is a framework for converting notebook to an interactive web app. It adds widgets to the notebook based on the YAML config. Below is presented a notebook with bloxs and the same notebook served as a web app with Mercury.
 
 #### The notebook with bloxs
 
