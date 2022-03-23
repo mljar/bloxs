@@ -141,9 +141,10 @@ class B:
         if position == 0:
             script_html = f"""
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js" integrity="sha512-QSkVNOCYLtj73J4hbmVoOV6KVZuMluZlioC+trLpewV8qMjsWqlIQvkn1KGX2StWvPMdWGBqim1xlC8krl1EKQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="{self.path}/chart.3.7.1.min.js"></script>            
+            
         """
-
+        # need to figure out the way for offline serving ... ????
+        # <script src="{self.path}/chart.3.7.1.min.js"></script>
         script_html += f"""
 <script>
   const labels{position} = Array({len(self.points)}).fill('');
