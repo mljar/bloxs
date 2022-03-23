@@ -7,6 +7,8 @@ Bloxs is a simple python package that helps you display information in an attrac
 
 It works with: Jupyter Notebook, Google Colab, Deepnote, Kaggle Notebook, [Mercury](https://github.com/mljar/mercury).
 
+![](docs/media/bloxs_demo.gif)
+
 ## Get started
 
 Install bloxs:
