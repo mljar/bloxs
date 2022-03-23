@@ -3,7 +3,7 @@
 
 # Bloxs
 
-Bloxs is a simple python package that helps you display information in an attractive way (formed in blocks).
+Bloxs is a simple python package that helps you display information in an attractive way (formed in blocks). Perfect for building dashboards, reports and apps in the notebook.
 
 It works with: Jupyter Notebook, Google Colab, Deepnote, Kaggle Notebook, [Mercury](https://github.com/mljar/mercury).
 
