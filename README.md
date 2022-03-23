@@ -1,6 +1,5 @@
-<p align="center">
-<img src="https://raw.githubusercontent.com/mljar/visual-identity/main/bloxs/blox%20line%20white.png" />
-</p>
+
+![](https://raw.githubusercontent.com/mljar/visual-identity/main/bloxs/blox-banner.png)
 
 # Bloxs
 
@@ -77,3 +76,7 @@ B([
 ![](docs/media/bloxs_mercury.gif)
 
 The web app is available on [our server](https://mercury.mljar.com/app/5) :computer:
+
+<p align="center">
+<img src="https://raw.githubusercontent.com/mljar/visual-identity/main/bloxs/blox%20line%20white.png" />
+</p>
