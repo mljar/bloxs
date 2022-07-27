@@ -1,6 +1,7 @@
 import os
 from uuid import uuid4
 
+
 class B:
 
     BLUE = "#00B1E4"
@@ -19,6 +20,8 @@ class B:
         color=None,
         points=None,
         chart_type=None,
+        border_color=None,
+        fill_color=None,
     ):
         self.data = data
         self.title = title
@@ -30,6 +33,8 @@ class B:
         self.color = color
         self.points = points
         self.chart_type = chart_type
+        self.border_color = border_color
+        self.fill_color = fill_color
 
         # position when displayed as a list
         self.position = None
@@ -131,6 +136,11 @@ class B:
             else:
                 border_color = self.color
 
+        if self.border_color is not None:
+            border_color = self.border_color
+        if self.fill_color is not None:
+            fill_color = self.fill_color
+
         points_str = ",".join([str(i) for i in self.points])
 
         stepped_html = ""
@@ -150,7 +160,7 @@ class B:
             """
         else:
             script_html += "<script>"
-            
+
         script_html += f"""
 
   const labels{position}{uid} = Array({len(self.points)}).fill('');
