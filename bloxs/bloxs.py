@@ -1,4 +1,5 @@
 import os
+from uuid import uuid4
 
 class B:
 
@@ -91,9 +92,8 @@ class B:
   {title_html}
   {progress_html}
   {chart_html}
-</div>
-
   {script_html}
+</div>
   """
 
     def construct_chart_html(self):
@@ -109,7 +109,8 @@ class B:
         )
 
         position = self.position if self.position is not None else 0
-        chartId = f"id-{title}-{position}"
+        uid = str(uuid4()).replace("-", "")
+        chartId = f"id-{title}-{position}{uid}"
 
         chart_html = (
             f"""<canvas id="{chartId}" style="width: 100%; border: 0px"></canvas>"""
@@ -138,18 +139,24 @@ class B:
 
         script_html = ""
         if position == 0:
-            script_html = f"""
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js" integrity="sha512-QSkVNOCYLtj73J4hbmVoOV6KVZuMluZlioC+trLpewV8qMjsWqlIQvkn1KGX2StWvPMdWGBqim1xlC8krl1EKQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            script_html += """
+            <script src="https://requirejs.org/docs/release/2.3.6/minified/require.js"></script>
+            <script>
+            require.config({
+                paths: {
+                    chartjs: 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min'
+                }
+            });
+            """
+        else:
+            script_html += "<script>"
             
-        """
-        # need to figure out the way for offline serving ... ????
-        # <script src="{self.path}/chart.3.7.1.min.js"></script>
         script_html += f"""
-<script>
-  const labels{position} = Array({len(self.points)}).fill('');
 
-  const data{position} = {{
-    labels: labels{position},
+  const labels{position}{uid} = Array({len(self.points)}).fill('');
+
+  const data{position}{uid} = {{
+    labels: labels{position}{uid},
     datasets: [{{
       label: '{title}',
       backgroundColor: '{fill_color}',
@@ -159,13 +166,13 @@ class B:
       {stepped_html}
     }}]
   }};
-  """
+        """
         script_html += f"""
-  const config{position} = {{
+  const config{position}{uid} = {{
     type: '"""
         script_html += "bar" if self.chart_type == "bar" else "line"
         script_html += f"""',
-    data: data{position}"""
+    data: data{position}{uid}"""
         script_html += """,
     options: { 
      elements: {
@@ -192,23 +199,17 @@ class B:
        }
      }
     },
-
   };
-</script>
-    """
+        """
 
         script_html += f"""
+        require(['chartjs'], function(Chart) {{
+            const ctx = document.getElementById('{chartId}').getContext('2d');
+            new Chart(ctx, config{position}{uid});
+        }});
 
-<script>
-  const chart{position} = new Chart(
-    document.getElementById('{chartId}'),
-    config{position}
-  );
-</script>
+        </script>
 
         """
 
         return script_html, chart_html
-
-    def path(self):
-        return os.path.join(os.path.dirname(os.path.abspath(__file__)), "js_dist")
